@@ -2,7 +2,7 @@
   "name": "test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup_all": "npm i nodemon && npm i ejs && npm i express && npm i express-ejs-layouts && npm i express-validator && npm i express-session && npm i cookie-parser && npm i connect-flash"
