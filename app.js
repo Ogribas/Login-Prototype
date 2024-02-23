@@ -5,6 +5,7 @@ const expressLayouts = require('express-ejs-layouts');
 const {User} = require('./data/db');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const bcrypt = require('bcrypt');
 
 // Store Config
 const store = new MongoDBStore({
@@ -41,7 +42,7 @@ app.get('/login',(req,res)=>{
 app.post('/login',async (req,res)=>{
     if(await User.findOne({username: req.body.username})){
         const userdbPassword = await User.findOne({username: req.body.username}).then((user)=>{return user.password});
-        if(req.body.password !== userdbPassword){
+        if(!bcrypt.compare(req.body.password, userdbPassword)){
             console.log(`Password anda salah`)
         }else{
             const userId = await User.findOne({username:req.body.username}).then((user)=>{return user._id});
@@ -64,7 +65,7 @@ app.get('/register',(req,res)=>{
 app.post('/register',async (req,res)=>{
     const newUser = await new User({
         username: req.body.username,
-        password: req.body.password
+        password: await bcrypt.hash(req.body.password, 10)
     })
 
     try {
