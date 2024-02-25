@@ -4,9 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="/login" method="post" style="display: flex; flex-direction: column; gap: 2vh;border: 1px solid black; width: fit-content; padding: 1vw; " >
+    <form action="/login" method="post">
+    <div class="login-upb">
+        <div class="login-form">
+            <div class="login-form1">
+                <div class="login-gambar">
+                    <img src="upbwarnanew.gif" alt="" srcset="">
+                </div>
+                <div class="login-judul">
+                    <p>Sistem Informasi Akademik Mahasiswa</p>
+                </div>
+            </div>
+            <div class="login-form2">
+                <% if (typeof msg !== 'undefined' && msg.length > 0) { %>
+                    <p><%= msg %></p>
+                  <% } else { %>
+                   <p>Selamat datang di Halaman <span style="font-style: italic; font-weight: 300;">Login</span></p>
+                <% } %>
+             
+                
+                <div class="form">
+                    <input type="text" placeholder="Masukkan Username" id="username" name="username">
+                    <input type="password" placeholder="Masukkan Password" id="password"  name="password">
+                    <button type="submit" class="masuk">LOGIN</button>
+                </div>
+            </div>
+        </form>
+            <div class="login-form3">
+                    <a href="/register" id="register">Belum Register?</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <form action="/login" method="post" style="display: flex; flex-direction: column; gap: 2vh;border: 1px solid black; width: fit-content; padding: 1vw; " >
         <div>
             <label for="username">Username:</label>
             <input type="text" name="username" id="username">
@@ -21,6 +55,6 @@
     </form>
     <p>Anda sedang dihalaman Login, <br>
     pencet tombol dibawah untuk register</p>
-    <a href="/register" style="margin-top: 4vh; display: inline-block; text-decoration: none; border: 1px solid black; padding: .4vw 1vw; color: #4cd137;">Register</a>
+    <a href="/register" style="margin-top: 4vh; display: inline-block; text-decoration: none; border: 1px solid black; padding: .4vw 1vw; color: #4cd137;">Register</a> -->
 </body>
 </html>

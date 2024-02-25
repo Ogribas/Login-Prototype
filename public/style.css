@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*,html,body{
+    /* border: solid red 1px; */
+    font-family: poppins;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: #44397A;
+
+}
+
+.change{
+    width: 10%;
+    border-radius: 20px;
+    border: #CCBC88 1px solid;
+    background-color: #3A393E;
+    color: white;
+    
+}
+
+.login-upb{
+    display: flex;
+    height: 80vh;
+    gap: 6vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    background: white;
+    border-radius: 0px 40px 0px 40px;
+    border: 1px solid white;
+    padding: .4vw;
+   
+}
+
+.login-form1{
+    display: flex;
+    
+}
+
+.login-gambar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: auto;
+}
+
+.login-gambar img{
+    width: 8vw;
+
+    /* animation: melayang 2s ease-in infinite; */
+}
+
+
+
+
+.login-judul{
+    display: flex;
+    width: 60%;
+    background: #44397A;
+    
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 40px 0px 0px;
+}
+
+.login-judul p {
+    width: 80%;
+    font-size: 1.4vw;
+    font-family: poppins;
+    font-weight: 300;
+    color: white;
+}
+
+.login-form2{
+    display: flex;
+    flex-direction: column;
+    padding: .1vw 2vw;
+    text-align: center;
+}
+
+.login-form2 p{
+    color: red;
+    font-weight: 300;
+}
+
+.login-form2 .form{
+    display: flex;
+    gap: 3vh;
+    flex-direction: column;
+    
+}
+
+
+
+.form input{
+    
+    border: #CDCDCD 1px solid;
+    padding: .4vw;
+}
+
+
+
+.form input::placeholder{
+    color:#CDCDCD; 
+    font-weight: 300;
+}
+
+.form button{
+    width: 30%;
+    font-family: poppins;
+    color: white;
+    background: #44397A;
+    border: none;
+    padding: .8vw;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.login-form form{
+    display: flex;
+    margin: 0;
+}
+
+.login-form3 form button{
+    color: white;
+    background: #3A393E;
+    border: none;
+    margin: 0;
+    padding: .8vw;
+    
+}
+
+.login-form3 form button:nth-child(1){
+    color: #44397A;
+    background: #DDDDDD;
+    border-radius: 0px 0px 0px 10px;
+}
+
+.login-form3 form button:nth-child(2){
+    color: #44397A;
+    background: #e7e7e7;
+    border-radius: 0px 0px 10px 0px;
+}
+
+
+.notes{
+    position: relative; 
+    color: white; 
+    font-size: 1vw; 
+    font-weight: 300; 
+    top: 4vh;
+    animation: makan 25s linear infinite;
+}
+
+#register, #login{
+    text-decoration: none;
+    color: #44397A;
+    margin-top: 1vh;
+}
+
+
+@keyframes melayang {
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes bayangan{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+@keyframes makan {
+    0%{
+        opacity: 0;
+        transform: translateX(1400px);
+        overflow: hidden;
+    }
+    50%{
+        opacity: 1;
+        overflow: hidden;
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(-1400px);
+        overflow: hidden;
+    }
+}
+
+@keyframes spinningMobile {
+    0%{
+        opacity: 0;
+        transform: translateX(400px);
+        overflow: hidden;
+    }
+    50%{
+        opacity: 1;
+        overflow: hidden;
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(-400px);
+        overflow: hidden;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .notes{
+        overflow: hidden;
+        font-size: 4vw;
+        width: max-content;
+        top: 5vh;
+        position: relative;
+        display: inline-block;
+        color: white;
+        animation: spinningMobile 10s linear infinite;
+    }
+    .login-form{
+        width: fit-content;
+        padding: 1vw;
+    }
+
+    .login-gambar img{
+       width: 16vw;
+    }
+    .login-judul p {
+        font-size: 3vw;
+    }
+    .form button{
+        padding: 1.4vw;
+    }
+    .login-form3 form button{
+        padding: 1.4vw;
+        
+    }
+}

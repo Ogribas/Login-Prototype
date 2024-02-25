@@ -6,18 +6,20 @@ const {User} = require('./data/db');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const bcrypt = require('bcrypt');
+const flash = require('connect-flash');
 
 // Store Config
 const store = new MongoDBStore({
     uri: 'mongodb+srv://ogribas:saya123@login-prototype.drxub0o.mongodb.net/',
     collection: 'session',
-    expires:30000
+    expires:60000
 })
 
 // View Engine
 app.set('view engine', 'ejs');
 
 // Middleware
+app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}));
 app.use(session({
     secret:'secret',
@@ -25,6 +27,7 @@ app.use(session({
     resave: false,
     store
 }))
+app.use(flash());
 
 // Route
 
@@ -35,30 +38,59 @@ app.get('/',(req,res)=>{
 
 // Home
 app.get('/login',(req,res)=>{
-    res.render('login.ejs');
+    res.render('login.ejs',{msg:req.flash('msg')});
 })
 
 // POST Login
 app.post('/login',async (req,res)=>{
-    if(await User.findOne({username: req.body.username})){
+    await User.findOne({username: req.body.username})
+    .then(async ()=>{
         const userdbPassword = await User.findOne({username: req.body.username}).then((user)=>{return user.password});
-        if(!bcrypt.compare(req.body.password, userdbPassword)){
-            console.log(`Password anda salah`)
-        }else{
-            const userId = await User.findOne({username:req.body.username}).then((user)=>{return user._id});
-            req.session.isAuth = userId.toString();
-            console.log(userId.toString());
-            res.redirect('/home');
-        }
-    }else{
-        console.log('Anda belum register');
+
+        bcrypt.compare(req.body.password, userdbPassword).then(async (isMatch)=>{
+            if(!isMatch){
+                req.flash('msg','Password anda salah');
+                console.log(`Password anda salah`)
+                res.redirect('/login')
+            }
+            else{
+                const userId = await User.findOne({username:req.body.username}).then((user)=>{return user._id});
+                req.session.isAuth = userId.toString();
+                console.log(userId.toString());
+                res.redirect('/home');
+            }
+        })
+    })
+    .catch(async()=>{
+        req.flash('msg','Salah menginput username');
+        console.log('Salah menginput username');
         res.redirect('/login')
-    }
+        
+    })
+    
+   
 })
+
+// app.post('/login',async (req,res)=>{
+//     if(await User.findOne({username: req.body.username})){
+//         const userdbPassword = await User.findOne({username: req.body.username}).then((user)=>{return user.password});
+//         if(!bcrypt.compare(req.body.password, userdbPassword)){
+//             console.log(`Password anda salah`)
+//         }else{
+//             const userId = await User.findOne({username:req.body.username}).then((user)=>{return user._id});
+//             req.session.isAuth = userId.toString();
+//             console.log(userId.toString());
+//             res.redirect('/home');
+//         }
+//     }else{
+//         console.log('Anda belum register');
+//         res.redirect('/login')
+//     }
+// })
 
 // Register
 app.get('/register',(req,res)=>{
-    res.render('register.ejs');
+    res.render('register.ejs',{msg:req.flash('msg')});
 })
 
 // POST Register
@@ -74,13 +106,14 @@ app.post('/register',async (req,res)=>{
         }
 
         await newUser.save();
-
+        req.flash('msg','Anda telah berhasil Register')
         console.log(`${newUser.username}, Telah Berhasil Register`)
 
         res.redirect('/login');
 
     } catch (error) {
-        console.log(error.message);
+        console.log(`Gagal Login, karena username telah dipilih`)
+        req.flash('msg',error.message);
         res.redirect('/register')
     }
    

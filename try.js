@@ -4,7 +4,7 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
-const url = 'mongodb+srv://ogribas:saya123@login-prototype.drxub0o.mongodb.net/';
+const url = 'mongodb://localhost:27017/session-test';
 
 const store = new MongoDBStore({
   uri: url,
