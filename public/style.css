@@ -250,7 +250,7 @@ body{
         animation: spinningMobile 10s linear infinite;
     }
     .login-form{
-        width: fit-content;
+        width: 90%;
         padding: 2vw;
     }
 
