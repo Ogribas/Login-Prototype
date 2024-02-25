@@ -47,6 +47,9 @@ button{
         padding: 2vw 10vw;
         
     }
+    login-form{
+        padding: 2vw;
+    }
     
 
 }
