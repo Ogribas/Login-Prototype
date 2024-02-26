@@ -298,7 +298,7 @@ hr{
         animation: spinningMobile 10s linear infinite;
     }
     .login-form{
-        width: fit-content;
+        width: 90%;
         padding: 1vw;
     }
 
@@ -316,7 +316,19 @@ hr{
         
     }
     #kuis{
-        width: 4vw;
+        width: 4.6vw;
         margin-right: 2vw;
+    }
+
+    .form input{
+        padding: 1vw;
+    }
+
+    .welcome{
+        font-size: 4vw;
+    }
+
+    #register{
+        font-size: 3.6vw;
     }
 }
