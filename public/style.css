@@ -111,7 +111,7 @@ body{
 .form input{
     
     border: #CDCDCD 1px solid;
-    padding: .4vw;
+    padding: .6vw;
 }
 
 
@@ -181,6 +181,54 @@ body{
     margin-top: 1vh;
 }
 
+.password-div{
+    /* border: 1px solid red; */
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.password-div input{
+    display: flex;
+    width: 100%;
+}
+
+/* .show-password{
+    position: absolute;
+    border: 1px solid red;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+    padding: 1vw;
+} */
+
+.show-password img{
+    margin: 0;
+    position: absolute;
+    right: 0;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 0 1vw;
+    height: 100%;
+    width: 1.4vw;
+    cursor: pointer;
+   
+}
+
+hr{
+
+    border: 1px solid #CDCDCD;
+    width: 100%;
+}
+
+/* BATAS */
 
 @keyframes melayang {
     0%{
@@ -250,8 +298,8 @@ body{
         animation: spinningMobile 10s linear infinite;
     }
     .login-form{
-        width: 90%;
-        padding: 2vw;
+        width: fit-content;
+        padding: 1vw;
     }
 
     .login-gambar img{
@@ -266,5 +314,9 @@ body{
     .login-form3 form button{
         padding: 1.4vw;
         
+    }
+    #kuis{
+        width: 4vw;
+        margin-right: 2vw;
     }
 }

@@ -102,7 +102,10 @@ app.post('/register',async (req,res)=>{
 
     try {
         if(await User.findOne({username: req.body.username})){
-            throw new Error (`Gagal Login, karena username telah dipilih`)
+            throw new Error (`Gagal Login,  Username telah diambil`)
+        }
+        if(req.body.password !== req.body.password1){
+            throw new Error (`Password anda tidak sama`)
         }
 
         await newUser.save();
@@ -112,8 +115,8 @@ app.post('/register',async (req,res)=>{
         res.redirect('/login');
 
     } catch (error) {
-        console.log(`Gagal Login, karena username telah dipilih`)
         req.flash('msg',error.message);
+        console.log(`Gagal Login, Username telah diambil`)
         res.redirect('/register')
     }
    

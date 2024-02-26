@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="register.js"></script>
 </head>
 <body>
+
     <form action="/register" method="post">
         <div class="login-upb">
             <div class="login-form">
@@ -27,9 +29,17 @@
                  
                     
                     <div class="form">
-                        <input type="text" placeholder="Masukkan Username" id="username" name="username">
-                        <input type="password" placeholder="Masukkan Password" id="password"  name="password">
+                        <input type="text" placeholder="Username" id="username" name="username">
+                        <input type="password" placeholder="Password" id="password1"  name="password1">
+                        <div class="password-div">
+                            <input type="password" placeholder="Ulang Password anda" id="password"  name="password">
+                            <div class="show-password">
+    
+                                <img src="/img/eye.svg" id="kuis"alt="">
+                            </div>
+                        </div>
                         <button type="submit" class="masuk">REGISTER</button>
+                        <hr>
                     </div>
                 </div>
             </form>
